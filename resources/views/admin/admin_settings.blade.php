@@ -29,7 +29,23 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" method="POST" action="{{ url('/admin/update-pwd') }}" name="updatePasswordForm"
+                @if (Session::has('error_message'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px">
+                        {{ Session::get('error_message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+                @if (Session::has('success_message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px">
+                        {{ Session::get('success_message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+                <form role="form" method="POST" action="{{ url('/admin/update-current-pwd') }}" name="updatePasswordForm"
                     id="updatePasswordForm">@csrf
                     <div class="card-body">
                         <div class="form-group">
@@ -48,18 +64,18 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Current Password</label>
                             <input type="password" class="form-control" id="current_pwd" name="current_pwd"
-                                placeholder="Enter Current Password">
+                                placeholder="Enter Current Password" required="">
                         </div>
                         <span id="chkCurrentPwd"></span>
                         <div class="form-group">
                             <label for="exampleInputPassword1">New Password</label>
-                            <input type="cpassword" class="form-control" id="new_pwd" name="new_pwd"
-                                placeholder="Enter New Password">
+                            <input type="password" class="form-control" id="new_pwd" name="new_pwd"
+                                placeholder="Enter New Password" required="">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Confirm Password</label>
-                            <input type="cpassword" class="form-control" id="confirm_pwd" name="confirm_pwd"
-                                placeholder="Confirm New  Password">
+                            <input type="password" class="form-control" id="confirm_pwd" name="confirm_pwd"
+                                placeholder="Confirm New  Password" required="">
                         </div>
                     </div>
                     <!-- /.card-body -->
