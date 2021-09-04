@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
+use App\Admin;
 
 
 class AdminController extends Controller
@@ -14,7 +15,9 @@ class AdminController extends Controller
         return view('admin.admin_dashboard');
     }
     public function settings(){
-        return view('admin.admin_settings');
+        // echo "<pre>";print_r(Auth::guard('admin')->user()); die;
+        $adminDetails = Admin::where('email', Auth::guard('admin')->user()->email)->first();
+        return view('admin.admin_settings')->with(compact('adminDetails'));
     }
     public function login(Request $request){
         if($request->isMethod('post')){

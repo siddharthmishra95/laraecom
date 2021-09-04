@@ -32,8 +32,17 @@
                 <form>
                     <div class="card-body">
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Admin Name</label>
+                            <input type="text" class="form-control" value="{{ $adminDetails->name }}"
+                                placeholder="Enter Admin Name">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Admin Email</label>
-                            <input class="form-control" readonly="">
+                            <input class="form-control" value="{{ $adminDetails->email }}" readonly="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Admin Type</label>
+                            <input class="form-control" value="{{ $adminDetails->type }}" readonly="">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Current Password</label>
@@ -49,10 +58,6 @@
                             <label for="exampleInputPassword1">Confirm Password</label>
                             <input type="cpassword" class="form-control" id="exampleInputPassword2"
                                 placeholder="Confirm New  Password">
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
                         </div>
                     </div>
                     <!-- /.card-body -->
