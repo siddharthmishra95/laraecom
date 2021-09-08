@@ -28,6 +28,10 @@
     <link rel="stylesheet" href="{{ url('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ url('plugins/summernote/summernote-bs4.min.css') }}">
+
+    <link rel="stylesheet" href="{{ url('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -89,9 +93,34 @@
     <script src="{{ url('js/admin_js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ url('js/admin_js/pages/dashboard.js') }}"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="{{ url('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ url('plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ url('plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ url('plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ url('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script>
+        $(function() {
+            $("#sections").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#sections_wrapper .col-md-6:eq(0)');
 
+        });
+    </script>
     <!-- Custom Admin JS-->
     <script src="{{ url('js/admin_js/admin_script.js') }}"></script>
+
+
 </body>
 
 </html>

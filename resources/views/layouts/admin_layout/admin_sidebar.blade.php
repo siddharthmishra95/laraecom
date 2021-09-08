@@ -40,7 +40,13 @@
                   <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
                   <li class="nav-item">
-                      <a href="{{ url('admin/dashboard') }}" class="nav-link">
+                      @if (Session::get('page') == 'dashboard')
+                          <?php $active = 'active'; ?>
+                      @else
+                          <?php $active = ''; ?>
+                      @endif
+
+                      <a href="{{ url('admin/dashboard') }}" class="nav-link" {{ $active }}>
                           <i class="nav-icon fas fa-tachometer-alt"></i>
                           <p>
                               Dashboard
@@ -48,8 +54,13 @@
                           </p>
                       </a>
                   </li>
+                  @if (Session::get('page') == 'settings')
+                      <?php $active = 'active'; ?>
+                  @else
+                      <?php $active = ''; ?>
+                  @endif
                   <li class="nav-item menu-open">
-                      <a href="#" class="nav-link active">
+                      <a href="#" class="nav-link {{ $active }}">
 
                           <i class="nav-icon fas fa-cog"></i>
                           <p>
@@ -68,6 +79,38 @@
                               <a href="{{ url('admin/update-admin-details') }}" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Update Admin Details</p>
+                              </a>
+                          </li>
+
+                      </ul>
+                  </li>
+
+                  {{-- Catalouges --}}
+                  @if (Session::get('page') == 'sections')
+                      <?php $active = 'active'; ?>
+                  @else
+                      <?php $active = ''; ?>
+                  @endif
+                  <li class="nav-item menu-open">
+                      <a href="#" class="nav-link {{ $active }}">
+
+                          <i class="nav-icon fas fa-cog"></i>
+                          <p>
+                              Catalouges
+                              <i class="right fas fa-angle-left"></i>
+                          </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="{{ url('admin/sections') }}" class="nav-link active">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Sections</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ url('admin/categories') }}" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Categories</p>
                               </a>
                           </li>
 
